@@ -1,0 +1,12 @@
+{
+  "default_quality": "1080p",
+  "default_audio_bitrate": "320k",
+  "default_caption_langs": ["en", "pl", "es"],
+  "apply_finder_tag": true,
+  "finder_tag_name": "video",
+  "auto_cleanup_fragments": true,
+  "output_locations": {
+    "mac": "~/Movies/VIDEO_DOWNLOAD/",
+    "claude_desktop": "/mnt/user-data/outputs/video-downloads/"
+  }
+}

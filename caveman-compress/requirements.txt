@@ -1,0 +1,17 @@
+# caveman-compress dependencies
+#
+# Core detection and validation (detect.py, validate.py) use only the Python
+# standard library. Everything below is optional (soft). The code degrades
+# gracefully when these are absent.
+
+# Optional: direct Anthropic API path in compress.py.
+# Used only when ANTHROPIC_API_KEY is set; otherwise the code shells out to the
+# `claude` CLI instead.
+# anthropic>=0.39
+
+# Optional: exact token counting in benchmark.py.
+# Falls back to a whitespace word count when not installed.
+# tiktoken>=0.7
+
+# Dev only: run the test suite.
+# pytest>=8

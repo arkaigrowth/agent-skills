@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#
+# kc-get: print a stored secret to stdout so a script can capture it.
+#
+#   TOKEN=$(kc-get NAME)
+#
+# Lookup is by Keychain service (-s), which is what kc-store sets. If an entry
+# was renamed in the Keychain Access GUI, only its label changed; you can still
+# find it by service name.
+#
+# Optional env:
+#   KC_KEYCHAIN  path to a specific keychain file (default: the login keychain).
+#
+# Exit codes:
+#   0  found (secret written to stdout)
+#   2  usage error
+#   3  not found
+#   5  not macOS (no `security` binary found)
+set -eu
+
+command -v security >/dev/null 2>&1 || {
+  echo "kc-get: 'security' not found; this tool is macOS only" >&2
+  exit 5
+}
+
+[ "$#" -eq 1 ] && [ -n "$1" ] || {
+  echo "usage: kc-get NAME" >&2
+  exit 2
+}
+NAME=$1
+
+if [ -n "${KC_KEYCHAIN:-}" ]; then
+  OUT=$(security find-generic-password -s "$NAME" -w "$KC_KEYCHAIN" 2>/dev/null) || {
+    echo "kc-get: not found: $NAME" >&2
+    exit 3
+  }
+else
+  OUT=$(security find-generic-password -s "$NAME" -w 2>/dev/null) || {
+    echo "kc-get: not found: $NAME" >&2
+    exit 3
+  }
+fi
+
+printf '%s\n' "$OUT"

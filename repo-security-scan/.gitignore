@@ -1,0 +1,24 @@
+# Scan outputs
+reports/
+.quarantine/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# OS / editor droppings
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
+
+# Logs and archives
+*.log
+*.zip

@@ -1,0 +1,14 @@
+# Optional agent-interface descriptor.
+#
+# This file is NOT required to use the skill. SKILL.md (with its YAML
+# frontmatter) is the installable Claude Code skill; the scripts and
+# references work on their own.
+#
+# This descriptor exists so the same skill can be surfaced inside an
+# OpenAI-style agent framework that reads a display name, a short
+# description, and a default prompt. If you only use Claude Code, you can
+# delete this file safely.
+interface:
+  display_name: "Dependency Patching"
+  short_description: "Guarded local dependency patching workflows"
+  default_prompt: "Use $patch-package to patch this dependency safely and document the lifecycle."

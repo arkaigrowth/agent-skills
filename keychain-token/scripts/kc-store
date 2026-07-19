@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+#
+# kc-store: store or rotate a secret in the macOS Keychain.
+#
+# The secret is read from stdin, never passed as a command-line argument to
+# kc-store itself, so it stays out of shell history and scrollback. Rotation is
+# the same command: re-run it with the new value ("-U" updates in place).
+#
+# Usage:
+#   printf '%s' "$TOKEN" | kc-store NAME ACCOUNT "KIND"
+#   kc-store NAME ACCOUNT "KIND" < secret_file
+#
+#   NAME    <consumer>-<scope>-<purpose>, e.g. gha-acme-prod-deploy
+#   ACCOUNT owning identity or org, e.g. acme or api@vendor.com
+#   KIND    human-readable type, e.g. "Vercel API token"
+#
+# Optional env:
+#   KC_KEYCHAIN  path to a specific keychain file (default: the login keychain).
+#                Mainly used by the test suite to avoid touching your login
+#                keychain.
+#
+# Exit codes:
+#   0  stored
+#   2  usage error (wrong args, or empty secret on stdin)
+#   4  the underlying `security` command failed
+#   5  not macOS (no `security` binary found)
+set -eu
+
+usage() {
+  echo "usage: printf '%s' \"\$TOKEN\" | kc-store NAME ACCOUNT KIND" >&2
+  exit 2
+}
+
+command -v security >/dev/null 2>&1 || {
+  echo "kc-store: 'security' not found; this tool is macOS only" >&2
+  exit 5
+}
+
+[ "$#" -eq 3 ] || usage
+NAME=$1
+ACCOUNT=$2
+KIND=$3
+[ -n "$NAME" ] && [ -n "$ACCOUNT" ] || usage
+
+# Read the secret from stdin. Tokens are single-line; only the first line is used.
+IFS= read -r SECRET || true
+[ -n "$SECRET" ] || {
+  echo "kc-store: empty secret on stdin" >&2
+  exit 2
+}
+
+rc=0
+if [ -n "${KC_KEYCHAIN:-}" ]; then
+  security add-generic-password -U -a "$ACCOUNT" -s "$NAME" -l "$NAME" \
+    -D "$KIND" -w "$SECRET" "$KC_KEYCHAIN" || rc=$?
+else
+  security add-generic-password -U -a "$ACCOUNT" -s "$NAME" -l "$NAME" \
+    -D "$KIND" -w "$SECRET" || rc=$?
+fi
+
+SECRET=""
+
+if [ "$rc" -eq 0 ]; then
+  echo "kc-store: stored $NAME" >&2
+  exit 0
+fi
+
+echo "kc-store: 'security add-generic-password' failed (rc=$rc)" >&2
+exit 4

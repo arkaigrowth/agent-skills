@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Editor droppings
+*.swp
+*~
+.idea/
+.vscode/
+
+# Runtime output and logs
+*.log
+download.log
+playlist_download.log

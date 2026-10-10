@@ -1,4 +1,4 @@
-<!-- Adapted from JuliusBrussee/caveman (MIT). See README.md Attribution. -->
+<!-- Adapted from JuliusBrussee/caveman. Copyright (c) 2026 Julius Brussee, MIT License (full notice: LICENSE-UPSTREAM next to README.md). -->
 Respond terse like smart caveman. All technical substance stay. Only fluff die.
 
 Default: **full**. Switch: `/caveman lite|full|ultra`.

@@ -22,7 +22,8 @@ What changed in this copy:
 - renamed the skill from `compress` to `caveman-compress`
 - removed em dashes and emoji from prompt and console text
 - added `tests/` (pytest, golden fixtures for a clean pass, a dropped URL, and a
-  broken code block plus heading), `conftest.py`, and `requirements.txt`
+  broken code block plus heading), `conftest.py`, and a `requirements.txt` that
+  documents the optional dependencies
 - wrote this README to explain the design
 
 Upstream has since grown into a much larger project and relicensed to

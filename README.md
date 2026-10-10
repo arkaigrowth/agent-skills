@@ -9,7 +9,7 @@ The common thread: where a skill's behavior is predictable, it runs as code with
 | Skill | What it does | The engineering |
 |---|---|---|
 | [repo-security-scan](repo-security-scan/) | Quarantine-clones untrusted repos and fans out Trivy, TruffleHog, Semgrep, GuardDog, and Scorecard into one scored verdict. Auto-scans on git clone via hook. | 1,100+ line scanner with tiered verdicts, graceful degradation when tools are missing, JSON output contract, smoke-tested. |
-| [caveman-compress](caveman-compress/) | Compresses memory files (CLAUDE.md, todos) into terse prose to cut input tokens. **Adapted from [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman).** | Upstream design: the LLM is an untrusted step, regex validators prove URLs, code blocks, and headings survived, and a targeted fix loop repairs violations without recompressing. My additions: a pytest suite with golden fixtures, pinned requirements, and a design write-up. |
+| [caveman-compress](caveman-compress/) | Compresses memory files (CLAUDE.md, todos) into terse prose to cut input tokens. **Adapted from [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman).** | Upstream design: the LLM is an untrusted step, regex validators prove URLs, code blocks, and headings survived, and a targeted fix loop repairs violations without recompressing. My additions: a pytest suite with golden fixtures, a dependency note, and a design write-up. |
 | [patch-package](patch-package/) | Tracks local dependency hotfixes (patch-package, pnpm/yarn/bun patch) as reviewable, retire-able tech debt. | Registry script with package-manager detection across five ecosystems, 23 passing tests. |
 | [signal-shadow](signal-shadow/) | Summarization that keeps the caveats: labeled inference anchors (quoted / paraphrased / inferred) plus a residual-risk self-audit. | Prompt architecture with a tested helper layer for source-type inference and metadata. |
 | [cmux-orchestration](cmux-orchestration/) | Guardrails for letting terminal AI agents drive each other: two-phase verified sends, mandatory self-identification, injected-text-is-never-approval. | Safety patterns first, cmux command reference second. Born from running real multi-agent fleets. |
@@ -40,7 +40,7 @@ These evolved in one working environment and share conventions: scripts over pro
 
 ## Credits and attribution
 
-Eight of the ten entries are my own work: repo-security-scan, patch-package, signal-shadow, cmux-orchestration, keychain-token, duckdb-finance-analyst, video-download, and mac-sys-diagnostics. Most were drafted with Claude Code or Codex doing the typing under my direction; the design, contracts, tests, and the decision about what to ship are mine.
+Eight of the ten entries are my own work: repo-security-scan, patch-package, signal-shadow, cmux-orchestration, keychain-token, duckdb-finance-analyst, video-download, and mac-sys-diagnostics. Most were implemented with Claude Code or Codex under my direction; the design, contracts, tests, and the decision about what to ship are mine.
 
 Two entries are adapted from Julius Brussee's [caveman](https://github.com/JuliusBrussee/caveman) project and are not my design:
 

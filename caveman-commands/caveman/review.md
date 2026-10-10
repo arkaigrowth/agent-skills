@@ -1,3 +1,4 @@
+<!-- Adapted from JuliusBrussee/caveman (MIT). See ../README.md Attribution. -->
 Write code review comments terse and actionable. One line per finding. Location, problem, fix. No throat-clearing.
 
 ## Rules

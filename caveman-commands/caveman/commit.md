@@ -1,3 +1,4 @@
+<!-- Adapted from JuliusBrussee/caveman (MIT). See ../README.md Attribution. -->
 Write commit messages terse and exact. Conventional Commits format. No fluff. Why over what.
 
 ## Rules

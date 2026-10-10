@@ -2,6 +2,18 @@
 
 Terse-output slash commands for Claude Code. Tell the assistant to drop the filler and keep the substance, so answers read like a smart caveman: short, exact, no throat-clearing.
 
+## Attribution
+
+These prompts are adapted from Julius Brussee's
+[caveman](https://github.com/JuliusBrussee/caveman) project (MIT licensed at
+the time, April 2026): upstream's `caveman` skill and its `caveman-commit` and
+`caveman-review` commands. The wording and the intensity-level design are
+upstream's. This folder repackages them as `.md` slash commands in the
+`~/.claude/commands/` layout and replaces em dashes and arrow glyphs with plain
+punctuation. Upstream's MIT notice is kept in [LICENSE-UPSTREAM](LICENSE-UPSTREAM).
+Upstream has since relicensed to Apache-2.0 from 3.0.0 and ships its own
+installer; use that for the maintained version.
+
 ## What this is
 
 Three Claude Code custom slash commands, defined entirely as prompt instructions:
@@ -101,4 +113,4 @@ Code review, missing null check
 
 ## License
 
-MIT. See the repository root.
+MIT. Upstream's notice is in [LICENSE-UPSTREAM](LICENSE-UPSTREAM) (Copyright (c) 2026 Julius Brussee).

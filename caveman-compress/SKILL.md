@@ -9,6 +9,8 @@ description: >
 
 # Caveman Compress
 
+Adapted from Julius Brussee's caveman project (https://github.com/JuliusBrussee/caveman, MIT). See README.md Attribution and LICENSE-UPSTREAM in this folder.
+
 ## Purpose
 
 Compress natural language files (CLAUDE.md, todos, preferences) into caveman-speak to reduce input tokens. Compressed version overwrites original. Human-readable backup saved as `<filename>.original.md`.

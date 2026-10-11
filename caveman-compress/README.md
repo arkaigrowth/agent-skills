@@ -8,6 +8,28 @@ file paths, headings) survive the rewrite untouched.
 This is a Claude Code skill. It pairs an LLM rewrite step with a plain-Python
 checker that treats the model's output as untrusted until it passes.
 
+## Attribution
+
+This skill is adapted from Julius Brussee's
+[caveman](https://github.com/JuliusBrussee/caveman) project (the
+`caveman-compress/` skill as of upstream commit `7d6aa3a`, April 2026, MIT
+licensed at the time). The compression prompt, the natural-language detector,
+the regex validator, and the fix-loop design are upstream's work. Upstream's MIT
+notice is kept in [LICENSE-UPSTREAM](LICENSE-UPSTREAM).
+
+What changed in this copy:
+
+- renamed the skill from `compress` to `caveman-compress`
+- removed em dashes and emoji from prompt and console text
+- added `tests/` (pytest, golden fixtures for a clean pass, a dropped URL, and a
+  broken code block plus heading), `conftest.py`, and a `requirements.txt` that
+  documents the optional dependencies
+- wrote this README to explain the design
+
+Upstream has since grown into a much larger project and relicensed to
+Apache-2.0 from 3.0.0. This copy stays on the MIT snapshot it was taken from.
+For the maintained version, install from the upstream repo.
+
 ## Why this exists
 
 Long memory files get re-read on every turn, so their prose is a recurring
@@ -140,4 +162,4 @@ key or network is required. Result at time of writing: 6 passed.
 
 ## License
 
-MIT. See the repository root `LICENSE`.
+MIT. Upstream's notice is in [LICENSE-UPSTREAM](LICENSE-UPSTREAM) (Copyright (c) 2026 Julius Brussee); the additions listed above are under the repository root `LICENSE`.

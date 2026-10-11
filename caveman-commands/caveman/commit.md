@@ -1,3 +1,4 @@
+<!-- Adapted from JuliusBrussee/caveman. Copyright (c) 2026 Julius Brussee, MIT License (full notice: LICENSE-UPSTREAM next to ../README.md). -->
 Write commit messages terse and exact. Conventional Commits format. No fluff. Why over what.
 
 ## Rules

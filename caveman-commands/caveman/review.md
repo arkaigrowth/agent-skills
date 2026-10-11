@@ -1,3 +1,4 @@
+<!-- Adapted from JuliusBrussee/caveman. Copyright (c) 2026 Julius Brussee, MIT License (full notice: LICENSE-UPSTREAM next to ../README.md). -->
 Write code review comments terse and actionable. One line per finding. Location, problem, fix. No throat-clearing.
 
 ## Rules
